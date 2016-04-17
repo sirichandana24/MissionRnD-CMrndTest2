@@ -47,9 +47,42 @@ First Island in DTD ie 'D' occurs alphabatically before 'H' and 'Z')
 #include <stdlib.h>
 #include <stdlib.h>
 #include <stdio.h>
-
-
+#include<string.h>
 char * find_common_route(char * hacklist, char *codelist, int *cost){
-	return NULL;
+	if (hacklist == NULL || codelist == NULL)
+		return NULL;
+	int len1, len2, i = 0, j = 0, count = 0;
+	len1 = strlen(hacklist);
+	len2 = strlen(codelist);
+	if (strstr(hacklist, codelist))
+	{
+		for (i = 0; i < len2; i++)
+			cost = cost + codelist[i];
+		return codelist;
+	}
+	if (strstr(codelist, hacklist))
+	{
+		for (i = 0; i < len1; i++)
+			cost = cost + codelist[i];
+		return hacklist;
+	}
+	for (i = 0; i < len1; i++)
+	{
+		if (hacklist[i] == codelist[i])
+			count++;
+	}
+	count = 0;
+	if (len1 == len2){
+		for (i = 0; i < len1 - 1; i++)
+		{
+			if (hacklist[i] == codelist[i])
+				count++;
+		}
+		if (count == len1 - 1)
+			for (i = 0; i < len1; i++)
+			{
+				cost = cost + hacklist[i];
+			}
+		return hacklist;
+	}
 }
-
